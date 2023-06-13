@@ -5,8 +5,9 @@ import cors from 'cors';
 
 dotenv.config();
 
-import authRoutes from './routes/authentication.js';
+import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
+import todoRoutes from './routes/todo.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/todo', todoRoutes);
 
 mongoose.connect(process.env.MONGODB_DATABASE_URL, {
     useNewUrlParser: true,

@@ -1,6 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import UserModel from '../model/User.js';
+import TodoModel from '../model/Todo.js';
 
 const router = express.Router();
 
@@ -44,6 +45,7 @@ router.delete("/delete/:id", async (req, res) => {
         };
 
         await UserModel.findByIdAndDelete(userId);
+        await TodoModel.deleteMany({ userId });
         return res.status(200).json({ message: "User deleted successfully." });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error.' });
