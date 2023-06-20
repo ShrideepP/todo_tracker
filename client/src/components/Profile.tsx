@@ -1,18 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import Dialog from "./Dialog";
 
 const Profile = () => {
 
     const Auth = useContext(AuthContext);
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleIsOpen = () => setIsOpen(!isOpen);
+
     const name = localStorage.getItem('name');
+
     const email = localStorage.getItem('email');
 
     return (
         <section className="w-full min-h-[87.5vh] grid place-items-center">
-            <form noValidate className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-[30%] space-y-10">
-                <h2 className="text-center text-4xl text-dominant font-light tracking-widest uppercase">
+            <Dialog isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
+            <form noValidate className="w-[90%] sm:w-3/4 md:w-2/4 lg:w-[500px] space-y-10">
+                <h2 className="text-center text-4xl text-dominant font-light tracking-wider uppercase">
                     Profile
                 </h2>
                 <div className="space-y-4">
@@ -29,12 +36,11 @@ const Profile = () => {
                     </div>
                 </div>
                 <p className="text-center text-sm text-compliment font-semibold">
-                    Delete Account? <button type="button" className="text-dominant font-bold hover:underline">Click here</button>
+                    Delete Account? <button onClick={toggleIsOpen} type="button" className="text-dominant font-bold hover:underline">Click here</button>
                 </p>
             </form>
         </section>
     );
-    
 };
 
 export default Profile;

@@ -11,7 +11,7 @@
 input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:hover {
-    -webkit-box-shadow: 0 0 0px 1000px #17181F inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #0A0A0A inset !important;
     -webkit-text-fill-color: #F5F5F5 !important;
     outline: none;
 }

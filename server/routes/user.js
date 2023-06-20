@@ -6,22 +6,6 @@ import verifyToken from '../middleware/verifyToken.js';
 
 const router = express.Router();
 
-router.get('/:userId', verifyToken, async (req, res) => {
-    try {
-        const userId = req.params.userId;
-
-        const user = await UserModel.findById(userId);
-        if(!user) {
-            return res.status(404).json({ message: 'User not found' });
-        };
-
-        res.status(200).json(user);
-    } catch (error) {  
-        res.status(500).json({ message: 'Internal server error.' });
-        console.log('Error while updating user credentials.', error);
-    };
-});
-
 router.put('/edit/:userId', verifyToken, async (req, res) => {
     try {
         const { name, email, password } = req.body;

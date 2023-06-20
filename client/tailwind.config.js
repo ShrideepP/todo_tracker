@@ -7,16 +7,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "nunito-sans": ["Nunito Sans", "sans-serif"],
+        'nunito-sans': ['Nunito Sans', 'sans-serif']
       },
       colors: {
-        "primary": "#FE8E8B",
-        "secondary": "#C445D5",
-        "dominant": "#F5F5F5",
-        "compliment": "#A3A3A3",
-        "background": "#17181F",
-      }
+        'dominant': '#F5F5F5',
+        'compliment': '#A3A3A3',
+        'background': '#0A0A0A'
+      },
     },
   },
   plugins: [],
-};
+}

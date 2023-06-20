@@ -61,8 +61,8 @@ const SignIn = () => {
 
     return (
         <section className="w-full min-h-[87.5vh] grid place-items-center">
-            <form noValidate onSubmit={handleSubmit(submitData)} className="w-4/5 sm:w-3/5 md:w-2/5 lg:w-[30%] space-y-10">
-                <h2 className="text-center text-4xl text-dominant font-light tracking-widest uppercase">
+            <form noValidate onSubmit={handleSubmit(submitData)} className="w-[90%] sm:w-3/4 md:w-2/4 lg:w-[500px] space-y-10">
+                <h2 className="text-center text-4xl text-dominant font-light tracking-wider uppercase">
                     Sign In
                 </h2>
                 <div className="space-y-4">
