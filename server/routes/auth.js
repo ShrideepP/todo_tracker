@@ -5,7 +5,7 @@ import UserModel from '../model/User.js';
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
+router.post('/sign-up', async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
     };
 });
 
-router.post('/login', async (req, res) => {
+router.post('/sign-in', async (req, res) => {
     try {
         const { email, password } = req.body;
         
@@ -52,7 +52,7 @@ router.post('/login', async (req, res) => {
         };
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-        res.status(202).json({ token, userId: user._id });
+        res.status(202).json({ token, user });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error.' });
         console.log('Error while logging in', error);

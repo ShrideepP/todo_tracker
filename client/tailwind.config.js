@@ -7,16 +7,15 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "josefin-sans": ["Josefin Sans", "sans-serif"],
+        "nunito-sans": ["Nunito Sans", "sans-serif"],
       },
       colors: {
-        "accent": "#EAC885",
-        "primary": "#292929",
-        "secondary": "#3D3D3D",
-        "success": "#62C25B",
-        "dominant": "#E0E0E0",
-        "compliment": "#B8B8B8",
-      },
+        "primary": "#FE8E8B",
+        "secondary": "#C445D5",
+        "dominant": "#F5F5F5",
+        "compliment": "#A3A3A3",
+        "background": "#17181F",
+      }
     },
   },
   plugins: [],

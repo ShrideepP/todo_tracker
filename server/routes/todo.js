@@ -1,10 +1,11 @@
 import express from 'express';
 import UserModel from '../model/User.js';
 import TodoModel from '../model/Todo.js';
+import verifyToken from '../middleware/verifyToken.js';
 
 const router = express.Router();
 
-router.get('/all/:userId', async (req, res) => {
+router.get('/all/:userId', verifyToken, async (req, res) => {
     try {
         const userId = req.params.userId;
 
@@ -21,7 +22,7 @@ router.get('/all/:userId', async (req, res) => {
     };
 });
 
-router.get('/completed/:userId', async (req, res) => {
+router.get('/completed/:userId', verifyToken, async (req, res) => {
     try {
         const userId = req.params.userId;
 
@@ -38,7 +39,7 @@ router.get('/completed/:userId', async (req, res) => {
     };
 });
 
-router.get('/active/:userId', async (req, res) => {
+router.get('/active/:userId', verifyToken, async (req, res) => {
     try {
         const userId = req.params.userId;
 
@@ -55,7 +56,7 @@ router.get('/active/:userId', async (req, res) => {
     };
 });
 
-router.post('/create/:userId', async (req, res) => {
+router.post('/create/:userId', verifyToken, async (req, res) => {
     try {
         const userId = req.params.userId;
         const { title } = req.body;
@@ -74,7 +75,7 @@ router.post('/create/:userId', async (req, res) => {
     };
 });
 
-router.patch('/update/:todoId', async (req, res) => {
+router.patch('/update/:todoId', verifyToken, async (req, res) => {
     try {
         const todoId = req.params.todoId;
         const { completed } = req.body;
@@ -96,7 +97,7 @@ router.patch('/update/:todoId', async (req, res) => {
     };
 });
 
-router.delete('/delete/:todoId', async (req, res) => {
+router.delete('/delete/:todoId', verifyToken, async (req, res) => {
     try {
         const todoId = req.params.todoId;
 
@@ -113,7 +114,7 @@ router.delete('/delete/:todoId', async (req, res) => {
     };
 });
 
-router.delete('/delete/completed/:userId', async (req, res) => {
+router.delete('/delete/completed/:userId', verifyToken, async (req, res) => {
     try {
         const userId = req.params.userId;
 

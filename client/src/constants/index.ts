@@ -1,9 +1,5 @@
-const URL = import.meta.env.VITE_API_URL;
-const USER_ID = localStorage.getItem('userId');
-const USER_TOKEN = localStorage.getItem('token');
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export {
-    URL,
-    USER_ID,
-    USER_TOKEN,
+    BASE_URL,
 };
