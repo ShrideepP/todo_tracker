@@ -1,12 +1,10 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { useCookies } from "react-cookie";
-import { AuthContext } from "../context/AuthContext";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { BASE_URL } from "../constants";
-import axios from "axios";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 interface DialogProps {
     isOpen: boolean;
@@ -18,8 +16,6 @@ const Dialog = ({ isOpen, toggleIsOpen } : DialogProps) => {
     const navigate = useNavigate();
 
     const [cookies, setCookies] = useCookies(["access_token"]);
-
-    const Auth = useContext(AuthContext);
 
     const Id = localStorage.getItem('Id');
 
@@ -53,8 +49,8 @@ const Dialog = ({ isOpen, toggleIsOpen } : DialogProps) => {
 
     return (
         isOpen && (
-            <div style={{ background: 'rgba(0,0,0,.8)', backdropFilter: 'blur(2px)' }} className="w-full h-screen fixed top-0 left-0 z-50 flex justify-center items-end sm:items-center">
-                <div style={{ border: '0.5px solid rgba(255,255,255,.2)' }} className="w-full sm:w-3/4 md:w-2/4 lg:w-[500px] p-4 md:p-6 space-y-6 bg-background rounded-t-lg sm:rounded-lg">
+            <div onClick={toggleIsOpen} style={{ background: 'rgba(0,0,0,.8)', backdropFilter: 'blur(2px)' }} className="w-full h-screen fixed top-0 left-0 z-50 flex justify-center items-end sm:items-center">
+                <div onClick={(event) => event.stopPropagation()} style={{ border: '1px solid rgba(255,255,255,.2)' }} className="w-full sm:w-3/4 md:w-2/4 lg:w-[500px] p-4 md:p-6 space-y-6 bg-background rounded-t-lg sm:rounded-lg">
                     <div className="space-y-2">
                         <h4 className="text-xl text-dominant font-semibold">
                             Are you absolutely sure?

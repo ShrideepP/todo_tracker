@@ -18,8 +18,8 @@ const Profile = () => {
     return (
         <section className="w-full min-h-[87.5vh] grid place-items-center">
             <Dialog isOpen={isOpen} toggleIsOpen={toggleIsOpen} />
-            <form noValidate className="w-[90%] sm:w-3/4 md:w-2/4 lg:w-[500px] space-y-10">
-                <h2 className="text-center text-4xl text-dominant font-light tracking-wider uppercase">
+            <form noValidate className="w-[90%] sm:w-3/4 md:w-2/4 lg:w-[500px] space-y-8">
+                <h2 className="text-center text-2xl md:text-3xl text-dominant font-thin tracking-wider uppercase">
                     Profile
                 </h2>
                 <div className="space-y-4">
@@ -27,7 +27,7 @@ const Profile = () => {
                     <input type="email" readOnly value={email ? email : Auth?.credentials.email} className="w-full h-12 px-5 text-sm text-dominant placeholder:text-compliment tracking-wider font-semibold outline-none border border-compliment bg-transparent rounded-full" />
                     <div>
                         <Link to="/profile/edit">
-                            <button type="submit" style={{background: 'linear-gradient(45deg, rgba(168,85,247,1) 0%, rgba(244,63,94,1) 100%)'}} className="w-full h-12 grid place-items-center rounded-full">
+                            <button type="submit" className="w-full h-12 grid place-items-center bg-gradient-to-tr from-primary to-secondary rounded-full">
                                 <span className="text-xs text-dominant font-bold tracking-widest uppercase">
                                     Update Credentials
                                 </span>
@@ -35,8 +35,8 @@ const Profile = () => {
                         </Link>
                     </div>
                 </div>
-                <p className="text-center text-sm text-compliment font-semibold">
-                    Delete Account? <button onClick={toggleIsOpen} type="button" className="text-dominant font-bold hover:underline">Click here</button>
+                <p className="text-center text-sm text-red-500 font-medium tracking-wide">
+                    Delete Account? <button onClick={toggleIsOpen} type="button" className="text-dominant font-semibold hover:underline">Click here</button>
                 </p>
             </form>
         </section>

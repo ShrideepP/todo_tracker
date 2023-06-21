@@ -61,25 +61,25 @@ const SignIn = () => {
 
     return (
         <section className="w-full min-h-[87.5vh] grid place-items-center">
-            <form noValidate onSubmit={handleSubmit(submitData)} className="w-[90%] sm:w-3/4 md:w-2/4 lg:w-[500px] space-y-10">
-                <h2 className="text-center text-4xl text-dominant font-light tracking-wider uppercase">
+            <form noValidate onSubmit={handleSubmit(submitData)} className="w-[90%] sm:w-3/4 md:w-2/4 lg:w-[500px] space-y-8">
+                <h2 className="text-center text-2xl md:text-3xl text-dominant font-thin tracking-wider uppercase">
                     Sign In
                 </h2>
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <input type="email" placeholder="Email" {...register("email")} className="w-full h-12 px-5 text-sm text-dominant placeholder:text-compliment tracking-wider font-semibold outline-none border border-compliment bg-transparent rounded-full" />
                         {errors.email && (
-                            <p className="text-sm text-red-500 font-medium">{errors.email?.message}</p>
+                            <p className="pl-5 text-sm text-red-500 font-medium">{errors.email?.message}</p>
                         )}
                     </div>
                     <div className="space-y-2">
                         <input type="password" placeholder="Password" {...register("password")} className="w-full h-12 px-5 text-sm text-dominant placeholder:text-compliment tracking-wider font-semibold outline-none border border-compliment bg-transparent rounded-full" />
                         {errors.password && (
-                            <p className="text-sm text-red-500 font-medium">{errors.password?.message}</p>
+                            <p className="pl-5 text-sm text-red-500 font-medium">{errors.password?.message}</p>
                         )}
                     </div>
                     <div>
-                        <button type="submit" style={{background: 'linear-gradient(45deg, rgba(168,85,247,1) 0%, rgba(244,63,94,1) 100%)'}} className="w-full h-12 grid place-items-center rounded-full">
+                        <button type="submit" className="w-full h-12 grid place-items-center bg-gradient-to-tr from-primary to-secondary rounded-full">
                             {signInMutation.isLoading ? (
                                 <AiOutlineLoading3Quarters color="#F5F5F5" size={20} className="animate-spin" />
                             ) : (
@@ -90,8 +90,8 @@ const SignIn = () => {
                         </button>
                     </div>
                 </div>
-                <p className="text-center text-sm text-compliment font-semibold">
-                    Don't have an account? <Link to="/sign-up" className="text-dominant font-bold hover:underline">Sign Up</Link>
+                <p className="text-center text-sm text-compliment font-medium tracking-wide">
+                    Don't have an account? <Link to="/sign-up" className="text-dominant font-semibold hover:underline">Sign Up</Link>
                 </p>
             </form>
         </section>
