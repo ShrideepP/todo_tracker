@@ -1,6 +1,6 @@
 import { ZodType, z } from 'zod';
 import { useForm } from 'react-hook-form';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { useCookies } from 'react-cookie';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AiOutlinePlus, AiOutlineLoading3Quarters } from 'react-icons/ai';
@@ -13,8 +13,18 @@ interface TodoSchema {
 };
 
 const schema: ZodType<TodoSchema> = z.object({
-    title: z.string()
+    title: z.string(),
 });
+
+interface TodoData {
+    _id: string;
+    title: string;
+    completed: boolean;
+};
+
+interface QueryData {
+    data: TodoData[]
+};
 
 const AddTodo = () => {
 
@@ -24,14 +34,19 @@ const AddTodo = () => {
 
     const [cookies, _] = useCookies(["access_token"]);
 
-    const addTodo = async (data: TodoSchema) => {
-        const response = await axios.post(`${BASE_URL}/api/todo/create/${userId}`, data, {
+    const queryClient = useQueryClient();
+
+    const addTodo = (data: TodoSchema) => {
+        return axios.post(`${BASE_URL}/api/todo/create/${userId}`, data, {
             headers: { 'Authorization': `Bearer ${cookies.access_token}` }
         });
-        return response.data;
     };
  
-    const { mutateAsync, isLoading } = useMutation(addTodo);
+    const { mutateAsync, isLoading } = useMutation(addTodo, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('todos');
+        },
+    });
 
     const submitData = async (data: TodoSchema) => {
         if(!data.title) {

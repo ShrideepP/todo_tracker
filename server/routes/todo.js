@@ -68,7 +68,7 @@ router.post('/create/:userId', verifyToken, async (req, res) => {
 
         const todo = new TodoModel({ title, userId });
         await todo.save();
-        res.status(201).json({ message: 'Todo created successfully.' });
+        res.status(201).json(todo);
     } catch (error) {
         res.status(500).json({ message: 'Internal server error.' });
         console.log('Error while creating a todo.', error);  
