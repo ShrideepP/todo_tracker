@@ -34,7 +34,7 @@ const Home = () => {
                 </h2>
                 <AddTodo />
                 <TodoItems data={data} isLoading={isLoading} />
-                <FilterTodos />
+                <FilterTodos handleFilterChange={handleFilterChange} />
             </div>
         </section>
     );

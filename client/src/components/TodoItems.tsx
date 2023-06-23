@@ -81,27 +81,31 @@ const TodoItems = ({ data, isLoading } : TodoItemsProps) => {
 
     return (
         <div className="w-full space-y-2">
-            {data?.map((todo: Todo) => (
-                <div key={todo._id} id='todo' style={{border: '1px solid rgba(255,255,255,.06)'}} className="w-full min-h-[3rem] pl-2 pr-4 text-compliment hover:text-dominant flex items-center gap-x-4 rounded-full">
-                    <button onClick={() => handleUpdatingTodo(todo._id, !todo.completed)} type="button" style={{ border: '1px solid transparent', background: 'linear-gradient(#0A0A0A, #0A0A0A) padding-box, linear-gradient(to top right, #C445D5, #FE8E8B) border-box' }} className="w-8 h-8 grid place-items-center rounded-full">
-                        {updateLoading.includes(todo._id) ? (
-                            <AiOutlineLoading3Quarters size={16} color="#F5F5F5" className="animate-spin" />
-                        ) : (
-                            todo.completed ? <BsCheck size={20} /> : null
-                        )}
-                    </button>
-                    <p className={`flex-1 text-sm font-medium ${todo.completed && 'line-through'} tracking-wide`}>
-                        {todo.title}
-                    </p>
-                    <button onClick={() => handleDeleteTodo(todo._id)} type="button" id='close'>
-                        {deleteLoading.includes(todo._id) ? (
-                            <AiOutlineLoading3Quarters size={18} color="#F5F5F5" className="animate-spin" />
-                        ) : (
-                            <TfiClose size={16} />
-                        )}
-                    </button>
-                </div>
-            ))}
+            {isLoading ? (
+                <h2>...Loading</h2>
+            ) : (
+                data?.map((todo: Todo) => (
+                    <div key={todo._id} id='todo' style={{border: '1px solid rgba(255,255,255,.06)'}} className="w-full min-h-[3rem] pl-2 pr-4 text-compliment hover:text-dominant flex items-center gap-x-4 rounded-full">
+                        <button onClick={() => handleUpdatingTodo(todo._id, !todo.completed)} type="button" style={{ border: '1px solid transparent', background: 'linear-gradient(#0A0A0A, #0A0A0A) padding-box, linear-gradient(to top right, #C445D5, #FE8E8B) border-box' }} className="w-8 h-8 grid place-items-center rounded-full">
+                            {updateLoading.includes(todo._id) ? (
+                                <AiOutlineLoading3Quarters size={16} color="#F5F5F5" className="animate-spin" />
+                            ) : (
+                                todo.completed ? <BsCheck size={20} /> : null
+                            )}
+                        </button>
+                        <p className={`flex-1 text-sm font-medium ${todo.completed && 'line-through'} tracking-wide`}>
+                            {todo.title}
+                        </p>
+                        <button onClick={() => handleDeleteTodo(todo._id)} type="button" id='close'>
+                            {deleteLoading.includes(todo._id) ? (
+                                <AiOutlineLoading3Quarters size={18} color="#F5F5F5" className="animate-spin" />
+                            ) : (
+                                <TfiClose size={16} />
+                            )}
+                        </button>
+                    </div>
+                ))
+            )}
         </div>
     );
 
