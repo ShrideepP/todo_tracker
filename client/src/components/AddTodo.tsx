@@ -16,16 +16,6 @@ const schema: ZodType<TodoSchema> = z.object({
     title: z.string(),
 });
 
-interface TodoData {
-    _id: string;
-    title: string;
-    completed: boolean;
-};
-
-interface QueryData {
-    data: TodoData[]
-};
-
 const AddTodo = () => {
 
     const { register, handleSubmit, reset } = useForm<TodoSchema>({ resolver: zodResolver(schema) });

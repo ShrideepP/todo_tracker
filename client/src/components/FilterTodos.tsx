@@ -1,6 +1,10 @@
-const FilterTodos = () => {
+interface FilterTodosProps {
+    handleFilterChange: (filter: string) => void;
+};
+
+const FilterTodos = ({ handleFilterChange } : FilterTodosProps) => {
     return (
-        <div>FilterTodos</div>
+        <button onClick={() => handleFilterChange('all')}>FilterTodos</button>
     );
 };
 
