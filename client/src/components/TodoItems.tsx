@@ -82,9 +82,11 @@ const TodoItems = ({ data, isLoading } : TodoItemsProps) => {
     return (
         <div className="w-full space-y-2">
             {isLoading ? (
-                <h2>...Loading</h2>
+                <p className='text-sm text-center text-dominant font-semibold'>...Loading</p>
             ) : (
-                data?.map((todo: Todo) => (
+                data?.length === 0 ? (
+                    <p className='text-sm text-center text-dominant font-semibold'>No todos found</p>
+                ) : data?.map((todo: Todo) => (
                     <div key={todo._id} id='todo' style={{border: '1px solid rgba(255,255,255,.06)'}} className="w-full min-h-[3rem] pl-2 pr-4 text-compliment hover:text-dominant flex items-center gap-x-4 rounded-full">
                         <button onClick={() => handleUpdatingTodo(todo._id, !todo.completed)} type="button" style={{ border: '1px solid transparent', background: 'linear-gradient(#0A0A0A, #0A0A0A) padding-box, linear-gradient(to top right, #C445D5, #FE8E8B) border-box' }} className="w-8 h-8 grid place-items-center rounded-full">
                             {updateLoading.includes(todo._id) ? (

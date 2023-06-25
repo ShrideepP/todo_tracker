@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { useCookies } from "react-cookie";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { BASE_URL } from "../constants";
+import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
+import { BASE_URL } from "../constants";
 import axios from "axios";
 
 interface DialogProps {
@@ -49,8 +50,23 @@ const Dialog = ({ isOpen, toggleIsOpen } : DialogProps) => {
 
     return (
         isOpen && (
-            <div onClick={toggleIsOpen} style={{ background: 'rgba(0,0,0,.8)', backdropFilter: 'blur(2px)' }} className="w-full h-screen fixed top-0 left-0 z-50 flex justify-center items-end sm:items-center">
-                <div onClick={(event) => event.stopPropagation()} style={{ border: '1px solid rgba(255,255,255,.2)' }} className="w-full sm:w-3/4 md:w-2/4 lg:w-[500px] p-4 md:p-6 space-y-6 bg-background rounded-t-lg sm:rounded-lg">
+            <motion.div 
+                onClick={toggleIsOpen} 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                style={{ background: 'rgba(0,0,0,.8)', backdropFilter: 'blur(2px)' }} 
+                className="w-full h-screen fixed top-0 left-0 z-50 flex justify-center items-end sm:items-center"
+            >
+                <motion.div 
+                    onClick={(event) => event.stopPropagation()} 
+                    initial={{ y: '-100vh', opacity: 0 }}
+                    animate={{ y: '0vh', opacity: 1 }}
+                    transition={{ duration: 0.1, type: 'spring', damping: 100, stiffness: 500 }}
+                    exit={{ y: '100vh', opacity: 0 }}
+                    style={{ border: '1px solid rgba(255,255,255,.2)' }} 
+                    className="w-full sm:w-3/4 md:w-2/4 lg:w-[500px] p-4 md:p-6 space-y-6 bg-background rounded-t-lg sm:rounded-lg"
+                >
                     <div className="space-y-2">
                         <h4 className="text-xl text-dominant font-semibold">
                             Are you absolutely sure?
@@ -75,8 +91,8 @@ const Dialog = ({ isOpen, toggleIsOpen } : DialogProps) => {
                             )}
                         </button>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         )
     );
 

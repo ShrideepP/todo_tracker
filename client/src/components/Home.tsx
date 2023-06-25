@@ -20,7 +20,7 @@ const Home = () => {
         return response.data;
     };
 
-    const { data, isLoading } = useQuery(['todos', filter], fetchTodos, {
+    const { data, isLoading, isFetched } = useQuery(['todos', filter], fetchTodos, {
         refetchOnWindowFocus: false,
     });
 
@@ -33,8 +33,15 @@ const Home = () => {
                     Ready to Conquer?
                 </h2>
                 <AddTodo />
-                <TodoItems data={data} isLoading={isLoading} />
-                <FilterTodos handleFilterChange={handleFilterChange} />
+                <TodoItems 
+                    data={data} 
+                    isLoading={isLoading && isFetched ? true : false} 
+                />
+                <FilterTodos 
+                    filter={filter} 
+                    handleFilterChange={handleFilterChange} 
+                    todoCount={data?.length ? data?.length : 0} 
+                />
             </div>
         </section>
     );
