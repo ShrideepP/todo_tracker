@@ -6,8 +6,6 @@ Goal Quest is an application designed to help you set and track your daily goals
 
 - User Registration and Login: Create an account or log in to access the application.
 - Goal Setting: Set your daily goals and track your progress.
-- Habit Tracking: Build positive habits by tracking your daily activities.
-- Journaling: Capture your thoughts and reflections to enhance self-awareness.
 - To-Do List: Stay organized by creating and managing your to-do tasks.
 - Filters: Easily filter and view your goals and tasks based on their completion status.
 
@@ -30,8 +28,8 @@ Goal Quest is an application designed to help you set and track your daily goals
 
 A live demo of the application can be found at:
 
-- Frontend: [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
-- Backend: [https://your-backend-url.render.com](https://your-backend-url.render.com)
+- Frontend: [https://goal-quest.vercel.app/](https://goal-quest.vercel.app/)
+- Backend: [https://api-todo-tracker.onrender.com/](https://api-todo-tracker.onrender.com/)
 
 ## Installation
 
